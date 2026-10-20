@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schoolwork Hub</title>
+<style>
+:root{--bg:#0a0d16;--panel:#121827;--panel2:#182136;--line:#27334d;--text:#edf2ff;--muted:#9ba9c5;--blue:#62a7ff;--cyan:#58e0e8;--green:#6ee7a8;--yellow:#ffd166;--red:#ff7e8b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top left,#142647 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{background:#0d1321eF;border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:22px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:#07111e;font-size:22px;font-weight:900;box-shadow:0 0 25px #58bfff30}.brand h1{font-size:17px;margin:0}.brand small{color:var(--muted)}.nav{display:grid;gap:7px}.nav button{border:0;color:var(--muted);background:transparent;text-align:left;padding:12px 13px;border-radius:11px;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#1b2942;color:white}.nav button.active{box-shadow:inset 3px 0 var(--cyan)}.nav .ico{width:20px;text-align:center}.sidebar-note{margin-top:auto;border:1px solid var(--line);background:#121b2b;padding:14px;border-radius:14px;color:var(--muted);font-size:12px}.sidebar-note strong{display:block;color:var(--text);font-size:13px;margin-bottom:4px}
+main{padding:30px;max-width:1500px;width:100%;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:27px}.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800}.topbar h2{font-size:30px;margin:3px 0 0}.top-actions{display:flex;gap:10px;align-items:center}.avatar-btn{width:44px;height:44px;flex:0 0 44px;border:2px solid var(--blue);border-radius:50%;padding:0;overflow:hidden;background:#1b2942;color:white;font-size:22px;display:grid;place-items:center;box-shadow:0 0 18px #62a7ff22}.avatar-btn img{width:100%;height:100%;object-fit:cover}.avatar-btn:hover{border-color:var(--cyan)}.search{width:min(280px,35vw);background:var(--panel);border:1px solid var(--line);color:var(--text);padding:11px 13px;border-radius:11px;outline:none}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 14px;border-radius:10px}.btn.primary{background:linear-gradient(135deg,#4d95f4,#4dd6dd);color:#07111e;border:0;font-weight:800}.btn.danger{color:var(--red)}.btn.small{padding:6px 9px;font-size:12px}.grid{display:grid;gap:17px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:20px}.stat,.panel{background:linear-gradient(145deg,#141d2f,#101725);border:1px solid var(--line);border-radius:17px}.stat{padding:18px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}.stat-icon{font-size:18px}.stat-num{font-size:30px;font-weight:800;margin-top:10px;letter-spacing:-1px}.stat-sub{font-size:12px;color:var(--muted)}.two-col{grid-template-columns:1.2fr .8fr}.panel{padding:20px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.panel h3{font-size:16px;margin:0}.muted{color:var(--muted)}.empty{padding:25px 10px;text-align:center;color:var(--muted)}.empty .big{font-size:30px;margin-bottom:6px}.task-list{display:grid;gap:10px}.task{display:flex;gap:12px;align-items:flex-start;padding:13px;border:1px solid #26324a;background:#111a2a;border-radius:12px}.task input[type=checkbox]{margin-top:5px;accent-color:var(--cyan);width:16px;height:16px}.task-body{flex:1;min-width:0}.task-title{font-weight:700;overflow-wrap:anywhere}.task.done .task-title{text-decoration:line-through;color:var(--muted)}.task-meta{display:flex;gap:7px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:4px}.tag{font-size:11px;padding:3px 8px;border-radius:20px;background:#24334e;color:#b8d6ff;white-space:nowrap}.tag.high{background:#48232e;color:#ffadb5}.tag.medium{background:#44371e;color:#ffe0a0}.tag.low{background:#183c35;color:#9cf0ca}.subject-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.subject{padding:17px;border:1px solid var(--line);background:#111a2a;border-radius:14px;cursor:pointer}.subject:hover{border-color:var(--blue);transform:translateY(-1px)}.subject .emoji{font-size:23px}.subject h4{margin:9px 0 2px}.subject p{margin:0;color:var(--muted);font-size:12px}.section{display:none}.section.active{display:block}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.filters select,.field input,.field select,.field textarea,.field input[type=date]{width:100%;background:#0d1422;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px;outline:none}.filters select{width:auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field label{font-size:12px;color:var(--muted)}.field.full{grid-column:1/-1}.field textarea{min-height:110px;resize:vertical}.modal-backdrop{position:fixed;inset:0;background:#02050bc9;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-backdrop.open{display:flex}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:#111a2b;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 20px 80px #0009}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modal-head h3{margin:0}.close{background:transparent;border:0;color:var(--muted);font-size:25px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.note-card{padding:15px;border:1px solid var(--line);background:#111a2a;border-radius:13px}.note-card h4{margin:0 0 6px}.note-card p{white-space:pre-wrap;overflow-wrap:anywhere;color:#c5d0e5;margin:0 0 12px}.notes-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-list{display:grid;gap:10px}.calendar-date{min-width:74px;padding:10px;background:#1b2942;border-radius:10px;text-align:center;color:#b8d6ff;font-weight:800}.calendar-row{display:flex;gap:13px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px}.calendar-row .grow{flex:1}.hint{font-size:12px;color:var(--muted);margin-top:12px}.footer{font-size:12px;color:var(--muted);margin-top:25px}.hidden{display:none!important}
+
+.auth-screen{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at top left,#142647 0,transparent 48%),var(--bg)}
+.auth-card{width:min(520px,100%);background:linear-gradient(145deg,#141d2f,#101725);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 20px 80px #0005}
+.auth-card h1{margin:0 0 6px;font-size:27px}.auth-card p{color:var(--muted)}.auth-card .field{margin:14px 0}.auth-card input{width:100%;background:#0d1422;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px;outline:none}.auth-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.auth-message{font-size:13px;color:var(--cyan);min-height:20px;margin-top:12px}.setup-details{margin-top:22px;border-top:1px solid var(--line);padding-top:14px}.setup-details summary{cursor:pointer;color:var(--cyan);font-weight:700}.setup-details code{overflow-wrap:anywhere}.account-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:10px}.app{display:none}.app.authenticated{display:grid}
+@media(max-width:950px){.app{grid-template-columns:1fr}.sidebar{padding:12px;border-right:0;border-bottom:1px solid var(--line);gap:12px}.brand{padding:5px}.nav{display:flex;overflow-x:auto}.nav button{white-space:nowrap;padding:10px}.sidebar-note{display:none}main{padding:20px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.topbar h2{font-size:25px}.top-actions{width:100%}.search{width:100%;flex:1}.stats{gap:10px}.stat{padding:13px}.stat-num{font-size:25px}.subject-grid,.notes-grid,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:14px}}
+</style>
+</head>
+<body>
+<section id="authScreen" class="auth-screen">
+  <div class="auth-card">
+    <div class="logo" style="margin-bottom:16px">✦</div>
+    <h1>Schoolwork Hub</h1>
+    <p>Log in to keep your classes, assignments, notes, projects, and avatar saved to your account across devices.</p>
+    <div class="field"><label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+    <div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 8 characters" required></div>
+    <div class="auth-actions"><button id="loginBtn" class="btn primary">Log in</button><button id="signupBtn" class="btn">Create account</button><button id="resetBtn" class="btn">Reset password</button></div>
+    <div id="authMessage" class="auth-message" role="status"></div>
+    <details class="setup-details" open>
+      <summary>One-time cloud setup</summary>
+      <p>Connect a free Supabase project. These are public project settings; <strong>never enter a service-role/secret key here.</strong></p>
+      <div class="field"><label for="supabaseUrl">Supabase Project URL</label><input id="supabaseUrl" type="url" placeholder="https://your-project.supabase.co" autocomplete="url"></div>
+      <div class="field"><label for="supabaseKey">Supabase publishable / anon key</label><input id="supabaseKey" type="password" placeholder="Paste the public client key"></div>
+      <button id="connectBtn" class="btn primary">Save connection</button>
+      <p class="hint">After saving the connection, run the SQL setup shown below in your Supabase project's SQL Editor. Then create your account here.</p>
+      <details style="margin-top:12px"><summary>Database SQL (run once in Supabase → SQL Editor)</summary>
+        <pre style="white-space:pre-wrap;overflow-wrap:anywhere;background:#0d1422;padding:12px;border-radius:10px;color:#c5d0e5;font-size:12px">create table if not exists public.schoolwork_data (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  content jsonb not null default '{"classes":[],"assignments":[],"notes":[],"projects":[]}'::jsonb,
+  avatar text,
+  updated_at timestamptz not null default now()
+);
+alter table public.schoolwork_data enable row level security;
+revoke all on public.schoolwork_data from anon;
+grant select, insert, update, delete on public.schoolwork_data to authenticated;
+drop policy if exists "Users can read own schoolwork" on public.schoolwork_data;
+drop policy if exists "Users can insert own schoolwork" on public.schoolwork_data;
+drop policy if exists "Users can update own schoolwork" on public.schoolwork_data;
+drop policy if exists "Users can delete own schoolwork" on public.schoolwork_data;
+create policy "Users can read own schoolwork" on public.schoolwork_data for select to authenticated using ((select auth.uid()) = user_id);
+create policy "Users can insert own schoolwork" on public.schoolwork_data for insert to authenticated with check ((select auth.uid()) = user_id);
+create policy "Users can update own schoolwork" on public.schoolwork_data for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "Users can delete own schoolwork" on public.schoolwork_data for delete to authenticated using ((select auth.uid()) = user_id);</pre>
+      </details>
+    </details>
+  </div>
+</section>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">✦</div><div><h1>Schoolwork Hub</h1><small>Your school command center</small></div></div>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="dashboard"><span class="ico">⌂</span>Dashboard</button>
+    <button data-page="assignments"><span class="ico">☑</span>Assignments</button>
+    <button data-page="classes"><span class="ico">▦</span>My Classes</button>
+    <button data-page="notes"><span class="ico">▤</span>Notes & Study Guides</button>
+    <button data-page="projects"><span class="ico">✧</span>Projects</button>
+    <button data-page="calendar"><span class="ico">▦</span>Due Dates</button>
+  </nav>
+  <div class="sidebar-note"><strong>☁️ Your account</strong>Schoolwork is synced to your private account when cloud setup is connected. Export a backup as an extra precaution.</div>
+</aside>
+<main>
+  <header class="topbar">
+    <div><div class="eyebrow" id="todayLabel">YOUR SCHOOL ORGANIZER</div><h2 id="pageTitle">Welcome back 👋</h2></div>
+    <div class="top-actions"><input id="globalSearch" class="search" placeholder="Search your schoolwork…" aria-label="Search schoolwork"><button class="btn primary" id="quickAdd">＋ Add new</button><span id="saveStatus" class="muted" style="font-size:12px" aria-live="polite">Cloud not connected</span><button class="btn" id="logoutBtn" type="button">Log out</button><button class="avatar-btn" id="avatarButton" type="button" title="Change your avatar" aria-label="Change your avatar">👤</button><input id="avatarFile" type="file" accept="image/*" class="hidden" aria-label="Choose avatar image"></div>
+  </header>
+  <section id="dashboard" class="section active">
+    <div class="grid stats">
+      <div class="stat"><div class="stat-top"><span>Total assignments</span><span class="stat-icon">📚</span></div><div class="stat-num" id="statTotal">0</div><div class="stat-sub">All your school tasks</div></div>
+      <div class="stat"><div class="stat-top"><span>Still to do</span><span class="stat-icon">⚡</span></div><div class="stat-num" id="statOpen">0</div><div class="stat-sub">Keep making progress</div></div>
+      <div class="stat"><div class="stat-top"><span>Completed</span><span class="stat-icon">✅</span></div><div class="stat-num" id="statDone">0</div><div class="stat-sub">Look at you go!</div></div>
+      <div class="stat"><div class="stat-top"><span>Subjects</span><span class="stat-icon">🎓</span></div><div class="stat-num" id="statClasses">0</div><div class="stat-sub">Classes in your list</div></div>
+    </div>
+    <div class="grid two-col">
+      <div class="panel"><div class="panel-head"><h3>🎯 Upcoming assignments</h3><button class="btn small" data-goto="assignments">View all →</button></div><div id="dashTasks" class="task-list"></div></div>
+      <div class="panel"><div class="panel-head"><h3>📘 My classes</h3><button class="btn small" data-goto="classes">Manage</button></div><div id="dashClasses" class="subject-grid"></div></div>
+    </div>
+    <div class="panel" style="margin-top:17px"><div class="panel-head"><h3>🚀 Quick start</h3></div><p class="muted">Start by adding your classes, then enter assignments and save class notes. You can also paste assignment instructions into the notes section.</p><div class="top-actions" style="flex-wrap:wrap"><button class="btn primary" data-action="assignment">＋ Add assignment</button><button class="btn" data-action="class">＋ Add class</button><button class="btn" data-action="note">＋ Add notes</button><button class="btn" id="exportBtn">⇩ Export backup</button></div></div>
+  </section>
+  <section id="assignments" class="section">
+    <div class="panel"><div class="panel-head"><h3>All assignments</h3><button class="btn primary" data-action="assignment">＋ Add assignment</button></div><div class="filters"><select id="assignmentFilter"><option value="all">All statuses</option><option value="open">Not completed</option><option value="done">Completed</option></select><select id="subjectFilter"><option value="all">All classes</option></select><select id="priorityFilter"><option value="all">All priorities</option><option>High</option><option>Medium</option><option>Low</option></select></div><div id="assignmentList" class="task-list"></div></div>
+  </section>
+  <section id="classes" class="section">
+    <div class="panel"><div class="panel-head"><h3>My classes</h3><div class="top-actions"><button class="btn small" id="classExpandBtn" type="button">Show All</button><button class="btn primary" data-action="class">＋ Add class</button></div></div><p class="muted">Add your subjects, teacher, room, and any class details you want to remember.</p><div id="classGrid" class="grid subject-grid"></div></div>
+  </section>
+  <section id="notes" class="section">
+    <div class="panel"><div class="panel-head"><h3>Notes & study guides</h3><button class="btn primary" data-action="note">＋ Add notes</button></div><div id="notesGrid" class="grid notes-grid"></div></div>
+  </section>
+  <section id="projects" class="section">
+    <div class="panel"><div class="panel-head"><h3>Projects</h3><button class="btn primary" data-action="project">＋ Add project</button></div><p class="muted">Keep project directions, links, checkpoints, and progress in one place.</p><div id="projectList" class="task-list"></div></div>
+  </section>
+  <section id="calendar" class="section">
+    <div class="panel"><div class="panel-head"><h3>Due dates</h3><button class="btn primary" data-action="assignment">＋ Add assignment</button></div><p class="muted">Assignments are sorted by due date. Items without a due date appear at the bottom.</p><div id="calendarList" class="calendar-list"></div></div>
+  </section>
+  <div class="footer">Schoolwork Hub · Your organizer, your way. Remember to export a backup before clearing browser data or switching devices.</div>
+</main>
+</div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><div class="modal-head"><h3 id="modalTitle">Add item</h3><button class="close" id="closeModal" aria-label="Close">×</button></div><form id="editorForm"><div id="formFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn" id="cancelModal">Cancel</button><button type="submit" class="btn primary">Save</button></div></form></div>
+</div>
+<input id="importFile" type="file" accept="application/json,.json" class="hidden">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const STORE='schoolwork-hub-v1';
+const CONFIG_STORE='schoolwork-hub-supabase-config-v1';
+const AVATAR_STORE='schoolwork-hub-avatar-v1';
+const starter={classes:[],assignments:[],notes:[],projects:[]};
+let data=loadData(), editor={type:null,id:null}, activePage='dashboard', searchTerm='', classesExpanded=false;
+let supabaseClient=null, currentUser=null, avatarData=localStorage.getItem(AVATAR_STORE)||null, cloudSaveTimer=null, saveSequence=0;
+function loadData(){try{return {...structuredClone(starter),...JSON.parse(localStorage.getItem(STORE)||'{}')}}catch(e){return structuredClone(starter)}}
+function setStatus(message){const el=$('#saveStatus');if(el)el.textContent=message}
+function save(){localStorage.setItem(STORE,JSON.stringify(data));render();if(currentUser&&supabaseClient){setStatus('Saving…');clearTimeout(cloudSaveTimer);const seq=++saveSequence;cloudSaveTimer=setTimeout(()=>saveCloud(seq),650)}}
+async function saveCloud(seq){if(!currentUser||!supabaseClient)return;const snapshot={content:data,avatar:avatarData,updated_at:new Date().toISOString(),user_id:currentUser.id};const {error}=await supabaseClient.from('schoolwork_data').upsert(snapshot,{onConflict:'user_id'});if(seq!==saveSequence)return;if(error){setStatus('Cloud save failed');console.error(error);alert('Your latest change could not sync to the cloud. Check your connection and Supabase setup, then try again. Export a backup if needed.')}else setStatus('☁ Saved to your account')}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtDate(d){if(!d)return 'No due date';let x=new Date(d+'T12:00:00');return isNaN(x)?d:x.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}
+function todayISO(){let d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+$('#todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'}).toUpperCase();
+function renderAvatar(){$('#avatarButton').innerHTML=avatarData?`<img src="${avatarData}" alt="Your avatar">`:'👤'}
+renderAvatar();
+$('#avatarButton').addEventListener('click',()=>$('#avatarFile').click());
+$('#avatarFile').addEventListener('change',event=>{const file=event.target.files&&event.target.files[0];if(!file)return;if(!file.type.startsWith('image/')){alert('Please choose an image file.');event.target.value='';return;}if(file.size>5*1024*1024){alert('Please choose an image smaller than 5 MB.');event.target.value='';return;}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const size=256;canvas.width=size;canvas.height=size;const ctx=canvas.getContext('2d');const crop=Math.min(img.width,img.height);const sx=(img.width-crop)/2,sy=(img.height-crop)/2;ctx.drawImage(img,sx,sy,crop,crop,0,0,size,size);avatarData=canvas.toDataURL('image/jpeg',0.78);try{localStorage.setItem(AVATAR_STORE,avatarData)}catch(error){}renderAvatar();if(currentUser)save();};img.onerror=()=>alert('That image could not be opened. Try another image.');img.src=reader.result;};reader.readAsDataURL(file);event.target.value='';});
+function className(id){return data.classes.find(c=>c.id===id)?.name||'No class selected'}
+function go(page){activePage=page;$$('.section').forEach(s=>s.classList.toggle('active',s.id===page));$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));const titles={dashboard:'Welcome back 👋',assignments:'Assignments',classes:'My Classes',notes:'Notes & Study Guides',projects:'Projects',calendar:'Due Dates'};$('#pageTitle').textContent=titles[page]||'Schoolwork Hub';render()}
+function matches(text){return !searchTerm||String(text||'').toLowerCase().includes(searchTerm)}
+function taskHTML(a){return `<div class="task ${a.done?'done':''}"><input type="checkbox" aria-label="Mark ${esc(a.title)} completed" data-toggle-task="${a.id}" ${a.done?'checked':''}><div class="task-body"><div class="task-title">${esc(a.title)}</div><div class="task-meta"><span>${esc(className(a.classId))}</span><span>·</span><span>Due ${esc(fmtDate(a.due))}</span><span class="tag ${(a.priority||'Medium').toLowerCase()}">${esc(a.priority||'Medium')} priority</span></div>${a.details?`<div class="task-meta">${esc(a.details)}</div>`:''}</div><button class="btn small" data-edit="assignment:${a.id}">Edit</button><button class="btn small danger" data-delete="assignment:${a.id}">×</button></div>`}
+function classHTML(c){let count=data.assignments.filter(a=>a.classId===c.id&&!a.done).length;return `<div class="subject" data-edit="class:${c.id}"><div class="emoji">${esc(c.emoji||'📘')}</div><h4>${esc(c.name)}</h4><p>${esc(c.teacher||'Teacher not added')}${c.room?' · Room '+esc(c.room):''}</p><p style="margin-top:8px">${count} assignment${count===1?'':'s'} left</p><div style="margin-top:12px"><button class="btn small" data-edit="class:${c.id}">Edit</button> <button class="btn small danger" data-delete="class:${c.id}">Delete</button></div></div>`}
+function render(){
+ const open=data.assignments.filter(a=>!a.done);
+ $('#statTotal').textContent=data.assignments.length;$('#statOpen').textContent=open.length;$('#statDone').textContent=data.assignments.length-open.length;$('#statClasses').textContent=data.classes.length;
+ const upcoming=open.filter(a=>matches([a.title,a.details,className(a.classId)].join(' '))).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).slice(0,5);
+ $('#dashTasks').innerHTML=upcoming.length?upcoming.map(taskHTML).join(''):`<div class="empty"><div class="big">✨</div>No assignments yet. Add one to get started!</div>`;
+ $('#dashClasses').innerHTML=data.classes.length?data.classes.slice(0,6).map(classHTML).join(''):`<div class="empty" style="grid-column:1/-1">Add your first class.</div>`;
+ const matchingClasses=data.classes.filter(c=>matches([c.name,c.teacher,c.room,c.details].join(' ')));const visibleClasses=classesExpanded?matchingClasses:matchingClasses.slice(0,6);$('#classGrid').innerHTML=visibleClasses.length?visibleClasses.map(classHTML).join(''):`<div class="empty" style="grid-column:1/-1">No classes yet. Click “Add class” to create one.</div>`;const expandBtn=$('#classExpandBtn');expandBtn.textContent=classesExpanded?'Show Less':'Show All';expandBtn.disabled=matchingClasses.length<=6;expandBtn.style.opacity=matchingClasses.length<=6?'.55':'1';
+ const sf=$('#subjectFilter'), old=sf.value;sf.innerHTML='<option value="all">All classes</option>'+data.classes.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');if([...sf.options].some(o=>o.value===old))sf.value=old;
+ const status=$('#assignmentFilter').value, sub=sf.value, pri=$('#priorityFilter').value;
+ let filtered=data.assignments.filter(a=>matches([a.title,a.details,className(a.classId),a.priority].join(' '))&&(status==='all'||(status==='done'?a.done:!a.done))&&(sub==='all'||a.classId===sub)&&(pri==='all'||a.priority===pri)).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+ $('#assignmentList').innerHTML=filtered.length?filtered.map(taskHTML).join(''):`<div class="empty">No matching assignments. Try changing your filters or add a new one.</div>`;
+ const notes=data.notes.filter(n=>matches([n.title,n.body,className(n.classId)].join(' ')));
+ $('#notesGrid').innerHTML=notes.length?notes.map(n=>`<article class="note-card"><h4>${esc(n.title)}</h4><div class="task-meta" style="margin-bottom:9px">${esc(className(n.classId))} · ${esc(n.kind||'Notes')}</div><p>${esc(n.body)}</p><button class="btn small" data-edit="note:${n.id}">Edit</button> <button class="btn small danger" data-delete="note:${n.id}">Delete</button></article>`).join(''):`<div class="empty" style="grid-column:1/-1">No notes yet. Save class notes, directions, study guides, or reminders here.</div>`;
+ let projects=data.projects.filter(p=>matches([p.title,p.details,p.link,className(p.classId)].join(' '))).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+ $('#projectList').innerHTML=projects.length?projects.map(p=>`<div class="task"><div class="task-body"><div class="task-title">${esc(p.title)}</div><div class="task-meta">${esc(className(p.classId))} · Due ${esc(fmtDate(p.due))} · <span class="tag">${esc(p.status||'Not started')}</span></div>${p.details?`<p class="muted">${esc(p.details)}</p>`:''}${p.link?`<a href="${esc(safeURL(p.link))}" target="_blank" rel="noopener noreferrer" style="color:var(--cyan)">Open project link ↗</a>`:''}</div><button class="btn small" data-edit="project:${p.id}">Edit</button><button class="btn small danger" data-delete="project:${p.id}">×</button></div>`).join(''):`<div class="empty">No projects yet. Add a project and keep its instructions and links together.</div>`;
+ let cal=[...data.assignments].sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).filter(a=>matches([a.title,a.details,className(a.classId)].join(' ')));
+ $('#calendarList').innerHTML=cal.length?cal.map(a=>`<div class="calendar-row"><div class="calendar-date">${a.due?esc(new Date(a.due+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})):'No date'}</div><div class="grow"><strong>${esc(a.title)}</strong><div class="task-meta">${esc(className(a.classId))} · ${a.done?'Completed':'Not completed'}</div></div><button class="btn small" data-edit="assignment:${a.id}">Edit</button></div>`).join(''):`<div class="empty">Your due dates will show up here when you add assignments.</div>`;
+}
+function safeURL(s){try{let u=new URL(s);return ['http:','https:'].includes(u.protocol)?u.href:'#'}catch{return '#'}}
+const fields={
+ assignment:[['title','Assignment name','text',true],['classId','Class','class',false],['due','Due date','date',false],['priority','Priority','select:High,Medium,Low',false],['details','Instructions / what you need to do','textarea',false],['done','Completed?','check',false]],
+ class:[['name','Class name','text',true],['emoji','Icon (emoji)','text',false],['teacher','Teacher','text',false],['room','Room','text',false],['details','Class details','textarea',false]],
+ note:[['title','Note title','text',true],['classId','Class','class',false],['kind','Type','select:Class notes,Study guide,Instructions,Reminder,Other',false],['body','Your notes / information','textarea',true]],
+ project:[['title','Project name','text',true],['classId','Class','class',false],['due','Due date','date',false],['status','Progress','select:Not started,In progress,Waiting,Completed',false],['link','Project link (optional)','url',false],['details','Directions, steps, and other information','textarea',false]]
+};
+function openEditor(type,id=null){
+ editor={type,id};let item=id?data[type==='assignment'?'assignments':type==='class'?'classes':type==='note'?'notes':'projects'].find(x=>x.id===id):{};
+ $('#modalTitle').textContent=(id?'Edit ':'Add ')+({assignment:'assignment',class:'class',note:'notes / study guide',project:'project'}[type]);
+ $('#formFields').innerHTML=fields[type].map(([key,label,kind,required])=>{let value=item?.[key]??(key==='priority'?'Medium':key==='status'?'Not started':key==='emoji'?'📘':'');let ctrl='';
+ if(kind==='class')ctrl=`<select name="${key}"><option value="">No class selected</option>${data.classes.map(c=>`<option value="${c.id}" ${value===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select>`;
+ else if(kind.startsWith('select:'))ctrl=`<select name="${key}">${kind.slice(7).split(',').map(o=>`<option ${value===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
+ else if(kind==='textarea')ctrl=`<textarea name="${key}" ${required?'required':''}>${esc(value)}</textarea>`;
+ else if(kind==='check')ctrl=`<label style="display:flex;align-items:center;gap:8px;color:var(--text)"><input type="checkbox" name="${key}" ${value?'checked':''}> Mark as completed</label>`;
+ else ctrl=`<input name="${key}" type="${kind}" value="${esc(value)}" ${required?'required':''}>`;
+ return `<div class="field ${kind==='textarea'?'full':''}"><label>${esc(label)}</label>${ctrl}</div>`}).join('');
+ $('#modalBackdrop').classList.add('open');
+}
+function closeEditor(){$('#modalBackdrop').classList.remove('open');editor={type:null,id:null}}
+function deleteItem(type,id){if(!confirm('Delete this item? This cannot be undone unless you have an exported backup.'))return;let key=type==='assignment'?'assignments':type==='class'?'classes':type==='note'?'notes':'projects';data[key]=data[key].filter(x=>x.id!==id);if(type==='class'){data.assignments.forEach(a=>{if(a.classId===id)a.classId='' });data.notes.forEach(n=>{if(n.classId===id)n.classId='' });data.projects.forEach(p=>{if(p.classId===id)p.classId='' })}save()}
+$$('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+$$('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.goto)));
+$('#quickAdd').addEventListener('click',()=>openEditor('assignment'));
+document.addEventListener('click',e=>{
+ const expand=e.target.closest('#classExpandBtn');if(expand){classesExpanded=!classesExpanded;render();return}
+ const action=e.target.closest('[data-action]');if(action){openEditor(action.dataset.action);return}
+ const del=e.target.closest('[data-delete]');if(del){e.preventDefault();e.stopPropagation();let [type,id]=del.dataset.delete.split(':');deleteItem(type,id);return}
+ const edit=e.target.closest('[data-edit]');if(edit){let [type,id]=edit.dataset.edit.split(':');openEditor(type,id);return}
+ const tog=e.target.closest('[data-toggle-task]');if(tog){let a=data.assignments.find(x=>x.id===tog.dataset.toggleTask);if(a){a.done=tog.checked;save()}return}
+});
+$('#closeModal').onclick=closeEditor;$('#cancelModal').onclick=closeEditor;$('#modalBackdrop').addEventListener('click',e=>{if(e.target===$('#modalBackdrop'))closeEditor()});
+$('#editorForm').addEventListener('submit',e=>{e.preventDefault();let type=editor.type;const form=new FormData(e.currentTarget);let item={};for(const [key,label,kind] of fields[type]){if(kind==='check')item[key]=e.currentTarget.elements[key].checked;else item[key]=String(form.get(key)||'').trim()}if(type==='class'&&!item.emoji)item.emoji='📘';const key=type==='assignment'?'assignments':type==='class'?'classes':type==='note'?'notes':'projects';if(editor.id){let i=data[key].findIndex(x=>x.id===editor.id);data[key][i]={...data[key][i],...item}}else data[key].push({id:uid(),createdAt:new Date().toISOString(),...item});closeEditor();save()});
+['assignmentFilter','subjectFilter','priorityFilter'].forEach(id=>$('#'+id).addEventListener('change',render));
+$('#globalSearch').addEventListener('input',e=>{searchTerm=e.target.value;render()});
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='schoolwork-hub-backup.json';a.click();URL.revokeObjectURL(url)}
+$('#exportBtn').addEventListener('click',exportData);
+const imp=document.createElement('button');imp.className='btn';imp.textContent='⇧ Import backup';imp.style.display='none';document.querySelector('.footer').before(imp);imp.addEventListener('click',()=>$('#importFile').click());
+$('#importFile').addEventListener('change',async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(!d||!Array.isArray(d.classes)||!Array.isArray(d.assignments)||!Array.isArray(d.notes)||!Array.isArray(d.projects))throw Error();if(confirm('Import this backup and replace the schoolwork currently saved in this browser?')){data=d;save();alert('Backup imported!')}}catch(err){alert('That file does not look like a Schoolwork Hub backup.')}e.target.value=''});
+// Make backup tools available in the dashboard and the sidebar footer.
+imp.style.display='inline-block';imp.style.marginTop='10px';
+
+function setAuthMessage(message,isError=false){const el=$('#authMessage');el.textContent=message;el.style.color=isError?'var(--red)':'var(--cyan)'}
+function readConfig(){try{return JSON.parse(localStorage.getItem(CONFIG_STORE)||'{}')}catch{return {}}}
+function showAuth(){currentUser=null;$('#authScreen').style.display='grid';$('.app').classList.remove('authenticated');setStatus('Cloud not connected')}
+function showApp(){ $('#authScreen').style.display='none';$('.app').classList.add('authenticated');renderAvatar();render();setStatus('☁ Connected to your account') }
+async function connectSupabase(showMessage=true){const url=$('#supabaseUrl').value.trim(),key=$('#supabaseKey').value.trim();if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url)||!key){if(showMessage)setAuthMessage('Enter a valid Supabase project URL and public anon/publishable key.',true);return false}try{localStorage.setItem(CONFIG_STORE,JSON.stringify({url,key}));supabaseClient=window.supabase.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});if(showMessage)setAuthMessage('Connection saved. Next, run the SQL setup below, then create your account.');return true}catch(e){if(showMessage)setAuthMessage('Could not connect. Check the URL and public key.',true);return false}}
+async function loadCloudForUser(user){currentUser=user;setStatus('Loading your schoolwork…');const {data:row,error}=await supabaseClient.from('schoolwork_data').select('content,avatar').eq('user_id',user.id).maybeSingle();if(error){setAuthMessage('Database setup is not complete yet. Open the SQL setup section and run the SQL in Supabase, then log in again.',true);showAuth();console.error(error);return}if(row){data={...structuredClone(starter),...(row.content||{})};avatarData=row.avatar||null;}else{ // first login: carry this browser's existing work into the account
+  data=loadData();avatarData=localStorage.getItem(AVATAR_STORE)||null;
+  const {error:saveError}=await supabaseClient.from('schoolwork_data').upsert({user_id:user.id,content:data,avatar:avatarData,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+  if(saveError){setAuthMessage('Could not initialize your cloud data. Check the SQL setup and try again.',true);showAuth();console.error(saveError);return}
+}
+localStorage.setItem(STORE,JSON.stringify(data));if(avatarData)localStorage.setItem(AVATAR_STORE,avatarData);else localStorage.removeItem(AVATAR_STORE);showApp()}
+async function initApp(){const cfg=readConfig();if(cfg.url&&cfg.key){$('#supabaseUrl').value=cfg.url;$('#supabaseKey').value=cfg.key;if(await connectSupabase(false)){const {data:{session},error}=await supabaseClient.auth.getSession();if(!error&&session){await loadCloudForUser(session.user);supabaseClient.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_OUT'){showAuth()}else if(event==='SIGNED_IN'&&session&&!currentUser){setTimeout(()=>loadCloudForUser(session.user),0)}});return}}}showAuth()}
+$('#connectBtn').addEventListener('click',()=>connectSupabase(true));
+$('#loginBtn').addEventListener('click',async()=>{if(!supabaseClient&&!await connectSupabase(false)){setAuthMessage('First add your Supabase URL and public key, then click Save connection.',true);return}const email=$('#authEmail').value.trim(),password=$('#authPassword').value;if(!email||!password){setAuthMessage('Enter your email and password.',true);return}setAuthMessage('Logging in…');const {data:result,error}=await supabaseClient.auth.signInWithPassword({email,password});if(error){setAuthMessage(error.message,true);return}await loadCloudForUser(result.user)});
+$('#signupBtn').addEventListener('click',async()=>{if(!supabaseClient&&!await connectSupabase(false)){setAuthMessage('First add your Supabase URL and public key, then click Save connection.',true);return}const email=$('#authEmail').value.trim(),password=$('#authPassword').value;if(!email||password.length<8){setAuthMessage('Enter an email and a password with at least 8 characters.',true);return}setAuthMessage('Creating your account…');const {data:result,error}=await supabaseClient.auth.signUp({email,password});if(error){setAuthMessage(error.message,true);return}if(result.session&&result.user){await loadCloudForUser(result.user)}else{setAuthMessage('Account created. Check your email for a confirmation link, then return here and log in.')}});
+$('#resetBtn').addEventListener('click',async()=>{if(!supabaseClient&&!await connectSupabase(false)){setAuthMessage('First connect your Supabase project.',true);return}const email=$('#authEmail').value.trim();if(!email){setAuthMessage('Enter your email first, then click Reset password.',true);return}const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.href});setAuthMessage(error?error.message:'If that account exists, a password-reset email has been sent.',!!error)});
+$('#logoutBtn').addEventListener('click',async()=>{if(!supabaseClient)return;setStatus('Logging out…');await supabaseClient.auth.signOut();currentUser=null;data=structuredClone(starter);avatarData=null;localStorage.removeItem(STORE);localStorage.removeItem(AVATAR_STORE);showAuth();setAuthMessage('You are logged out. Your cloud account data is still saved online.')});
+initApp();
+</script>
+</body>
+</html>
